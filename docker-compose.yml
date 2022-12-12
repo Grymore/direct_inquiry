@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  app:
+    container_name: 'doku_test'
+    build: .
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      - 3006:3006
+    environment:
+      - PORT=3006
+    command: npm start
+volumes:
+  node_modules:
