@@ -28,7 +28,8 @@ router.get('/', cache("10 minutes"), async(req, res) => {
 
 
     res.status(200).json({
-        authorFind
+        res : authorFind.author,
+        req : authorFind.title
     })
 })
 

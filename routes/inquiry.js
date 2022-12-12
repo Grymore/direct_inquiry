@@ -6,7 +6,7 @@ const { time } = require("console");
 
 router.post("/request", function (req, res) {
   var requestHeader = req.headers;
-
+  console.log(req.body);
   const data = {
     order: {
       invoice_number: "inv-" + Date.now(+7),
@@ -15,19 +15,17 @@ router.post("/request", function (req, res) {
     virtual_account_info: {
       virtual_account_number:
         req.body["virtual_account_info"]["virtual_account_number"],
-      info1: "Thanks for shooping",
-      info2: "Candi Store",
-      info3: "Have a sweet day",
+      info1: "Thanks for shooping"
     },
     virtual_account_inquiry: {
       status: "success",
     },
     customer: {
-      name: "Node",
+      name: "ASJ Linkedin",
       email: "tot1@gmail.com",
     },
   };
-
+  
   function generateDigest(jsonBody) {
     let jsonStringHash256 = crypto
       .createHash("sha256")
