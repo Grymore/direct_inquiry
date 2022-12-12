@@ -1,6 +1,9 @@
 var express = require("express");
 var router = express.Router();
 
+var cacheService = require("express-api-cache");
+var cache = cacheService.cache;
+
 const ArtikelModel = require('../model/artikel')
 
 router.post('/',   async(req, res) =>{
@@ -18,7 +21,7 @@ router.post('/',   async(req, res) =>{
 })
 
 
-router.get('/', async(req, res) => {
+router.get('/', cache("10 minutes"), async(req, res) => {
     const { author } = req.body
    
     const authorFind = await ArtikelModel.findOne({where : { author :author}})
